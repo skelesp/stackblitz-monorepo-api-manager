@@ -1,0 +1,22 @@
+{
+  "name": "electron-angular-monorepo",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=18.13.0"
+  },
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "dev": "concurrently \"npm run dev:shared\" \"npm run dev:electron\" \"npm run dev:angular\"",
+    "dev:shared": "npm run dev -w @monorepo/shared",
+    "dev:electron": "npm run dev -w @monorepo/electron-app",
+    "dev:angular": "npm run dev -w @monorepo/angular-app",
+    "test": "npm run test --workspaces"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "typescript": "^5.3.3"
+  }
+}
